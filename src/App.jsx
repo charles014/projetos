@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from "axios";
 
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
@@ -10,7 +11,7 @@ import TaskDetails from "./components/TaskDetails";
 import './App.css'
 
 const App = () => {
-  // let message = "HELLO WORLD!"
+  
   const [tasks, setTasks] = useState([
     {
       id: '1',
@@ -24,6 +25,14 @@ const App = () => {
     }
 
   ]);
+
+  useEffect(() => {
+   const fetchTasks = async () => {
+        const response = await axios.get(
+          
+        )
+     }
+  }, []);
 
   const handleTaskClick = (taskId) =>{
       const newTasks  = tasks.map((task) => {
@@ -72,7 +81,7 @@ const App = () => {
             )}  
          />          
 
-          <Route path="/:taskTitle" exact render={TaskDetails} />
+          <Route path="/:taskTitle" exact component={TaskDetails} />
 
         </div> 
        
